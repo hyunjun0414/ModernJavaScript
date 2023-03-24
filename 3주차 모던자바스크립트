@@ -1,0 +1,73 @@
+let n1 = {name:'hong',age:20};
+const n2 = n1;
+
+n1 = {};
+n2 = {}; //error
+console.log(n1, n2);
+console.log(n1 === n2);
+
+
+
+// let n1 = {name:'hong',age:20};
+// const n2 = {name:'hong',age:20};
+// n1 = 'test string';
+// n2 = 'test string'; //error
+// console.log(n1, n2);
+
+
+
+// let n1 = {name:'hong',age:20};
+// const n2 = {name:'hong',age:20};
+// n1.name = 'kim';
+// n2.name = 'kim'; ////const도 객체의 내용물은 바꿀수있다. 
+// console.log(n1, n2);
+
+
+
+// let n1 = 10;
+// const n2 = 10;
+// n1 = 20;
+// n2 = 20; ////error
+// console.log(n1, n2);
+
+
+
+// // ES6
+// const obj = {
+//   name: 'Lee',
+//   // 메서드 축약 표현
+//   sayHi() {
+//     console.log('Hi! ' + this.name);
+//   }
+// };
+
+// obj.sayHi();
+
+
+
+
+// var x = 1;
+// var y = 2;
+
+// var obj = {
+//   x,  //x:x    //ecs5이상에서 속성과 값의 이름이 같으면 생략가능
+//   y
+// };
+
+// console.log(obj);
+
+
+
+
+// var foo =
+// {
+//   name1: 'Lee',
+//   name2: 'Kim'
+// };
+// var foo2 =
+// {
+//   ...foo,
+//   name2:'hong'
+// }
+// console.log(foo);
+// console.log(foo2);
