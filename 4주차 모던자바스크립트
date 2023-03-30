@@ -1,0 +1,247 @@
+//server
+function search(arr,fun)
+{
+  for(var i = 0;i<arr.length;++i)
+    if(fun(arr[i]))
+      return i;
+  return -1;    
+}
+//client
+
+var arr = [20,50,40,32,51,90];
+var idx = search(arr,(key)=>key== 32);
+if(idx != -1)
+console.log("idx: ",idx,"value: ",arr[idx]);
+
+
+
+
+
+// //server
+// function search(arr,fun)
+// {
+//   for(var i = 0;i<arr.length;++i)
+//     if(fun(arr[i]))
+//       return i;
+//   return -1;    
+// }
+// //client
+
+// var arr = [20,50,40,32,51,90];
+// var idx = search(arr,function(key){console.log(key); return key== 32;});
+// if(idx != -1)
+// console.log("idx: ",idx,"value: ",arr[idx]);
+
+
+
+
+// //server
+// function search(arr,key)
+// {
+//   for(var i = 0;i<arr.length;++i)
+//     if(key === arr[i])
+//       return i;
+//   return -1;    
+// }
+// //client
+
+// var arr = [20,50,40,32,51,90];
+// var idx = search(arr,32);
+// if(idx != -1)
+// console.log("idx: ",idx,"value: ",arr[idx]);
+
+
+
+
+// var arr = [1,2,3,4,5];
+// var arr2 = arr.map((n)=>n*2)
+
+// console.log(arr);
+// console.log(arr2);
+
+
+
+
+// var arr = [1,2,3,4,5];
+// var arr2 = [];
+// for(var i=0; i < arr.length;++i)
+//   arr2[i] = arr[i]*2;
+
+// console.log(arr);
+// console.log(arr2);
+
+
+
+
+
+// const f1 = () =>"안녕";
+// const f2 = () =>10+20;
+// const f3 = (a,b) => { console.log('a: ',a);console.log('b: ',b);};
+// const f4 = (a,b) => {console.log('a+b: ',a+b); return a+b};
+
+// console.log(f1());
+// console.log(f2());
+// console.log(f3(1,2));
+// console.log(f4(1,2));
+
+
+
+
+// var f = function f(x,y)
+// {
+//   console.log("function",x,y);
+//   return x+y;
+// }
+// // var f = new Function('x','y', 'console.log("function: ",x,y);
+// //         return x+y');
+// console.log(f(2,5));
+
+
+
+
+
+// console.log(add(2, 5)); // 7
+// console.log(sub(2, 5)); // TypeError: sub is not a function
+
+// // 함수 선언문
+// function add(x, y) {
+//   return x + y;
+// }
+
+// // 함수 표현식(호이스팅 되지않는다.)
+// var sub = function (x, y) {
+//   return x - y;
+// };
+
+
+
+
+// function add(x, y) {
+//   return x + y;
+// }
+
+// // 함수 참조
+// // console.dir은 console.log와는 달리 함수 객체의 프로퍼티까지 출력한다.
+// // 단, Node.js 환경에서는 console.log와 같은 결과가 출력된다.
+// console.dir(add); // ƒ add(x, y)
+// console.log(add);
+// // 함수 호출
+// console.log(add(2, 5));
+
+
+
+// function add(x, y) {
+//   return x + y;
+// }
+// // f(2, 5) = 7
+// console.log('add :',add(2, 5));   // 7
+
+
+
+
+// var o1 = {name: "aaa",desc:{msg:'메롱~~!'}};  
+
+// var s = JSON.stringify(o1);//객체를 문자열로
+// console.log(s); //객체가 출력된것이 아닌 문자열이 출력된것
+
+// var o2 = JSON.parse(s);//문자열을 객체로
+// console.log(o2);
+
+// o1.desc.msg = "바꿨지롱~!";
+// console.log(o1,o2);
+// //간단하지만 성능이 떨어지기 때문에 객체가 많을때는 사용하지않는다.
+
+
+
+
+// var o1 = {name: "aaa",desc:{msg:'메롱~~!'}};  
+
+// o2 = {...o1};  //잘 못한 객체 복사(값형식이 아닌 참조타입을 가지고 있다면 따로 깊은복사를 해야한다.)
+// o2 = {...o1,desc:{...o1.desc}};  //객체 복사(deep copy:깊은복사)
+// o1.desc.msg = "바꿨지롱~!"
+
+// console.log(o1,o2);
+// //따라서 ...문법은 깊이가 얕을때 사용
+
+
+
+// var o1 = { name: "aaa" };  
+// var o2 = { name: "bbb" };
+
+// o1 = {...o2};  //객체 복사(deep copy:깊은복사)
+// o1.name = 'kkk';
+// console.log(o1,o2);
+
+
+
+
+
+// var o1 = { name: "aaa" };  
+// var o2 = { name: "bbb" };
+
+// o1 = o2;  //참조복사(shallow copy:옅은복사)
+// o1.name = 'kkk';
+// console.log(o1,o2);
+
+
+
+
+// var n1 = 10;  //primitive type
+// var n2 = 10;
+
+// var o1 = { name: "aaa" };  //object type
+// var o2 = { name: "aaa" };
+
+// console.log(n1, n2);
+// console.log(o1, o2);
+// console.log('n1===n2: ',n1 === n2);
+// console.log('o1===o2: ',o1 === o2);
+
+
+
+
+// var n1 = 10;  //primitive type
+// var n2 = n1;
+
+// var o1 = { name: "aaa" };  //object type
+// var o2 = o1;
+
+// n1 = 20;
+// o1.name = 'bbb';
+
+// console.log(n1, n2);
+// console.log(o1, o2);
+// console.log('n1===n2: ',n1 === n2);
+// console.log('o1===o2: ',o1 === o2);
+
+
+
+// var n1 = 10;  //primitive type
+// var n2 = n1;
+
+// var o1 = { name: "aaa" };  //object type
+// var o2 = o1;
+
+// console.log(n1, n2);
+// console.log(o1, o2);
+
+
+
+
+
+
+
+
+//lodash 모듈사용(깊은복사)
+
+
+const _ = require('lodash');
+//lodash를 사용할땐 관례적으로 변수명을 _로 설정
+
+var o1 = {name: "aaa",desc:{msg:'메롱~~!'}};  
+var o2 = _.cloneDeep(o1);
+console.log(o1 === o2); // false
+console.log(o1.desc === o2.desc); // false
+console.log(o1,o2);
+
+//JSON보다 성능이좋다. 복잡한 형태의 깊은복사는 lodash모듈을 사용한다.
