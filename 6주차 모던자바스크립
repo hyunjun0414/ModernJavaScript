@@ -1,0 +1,172 @@
+function Circle(radius) {
+  // 생성자 함수 내부의 this는 생성자 함수가 생성할 인스턴스를 가리킨다.
+  this.radius = radius;
+  this.getDiameter = function () 
+  {
+    return 2 * this.radius;
+  };
+  return this; //생략가능
+}
+const o1 = new Circle(5);
+console.log(o1);
+
+
+
+// function Circle(radius) {
+//   // 생성자 함수 내부의 this는 생성자 함수가 생성할 인스턴스를 가리킨다.
+//   return {radius,
+//           getDiameter : function () 
+//           {
+//               return 2 * this.radius;
+//           }
+//           };
+// }
+// const o1 = new Circle(5);
+// console.log(o1);
+
+
+
+
+
+// const func = new Function('x', 'return x * x');
+// console.log(typeof func); // function
+// console.dir(func); 
+
+
+// const func2 = function(x)
+// {
+//   return x*x;
+// }
+// console.log(typeof func2); // function
+// console.dir(func2); 
+
+
+// function func3(x)
+// {
+//   return x*x;
+// }
+// console.log(typeof func3); // function
+// console.dir(func3); 
+
+
+
+
+
+// let p1 = {name:'홍길동',age:20};
+// let p2 = {name:'성춘향',age:21};
+// //...
+// console.log(p1,p2);
+
+// //생성자 함수(함수명을 대문자로)를 이용한 객체생성 많은양의 객체를 생성할때 효율적
+// function Person(name,age)
+// {
+//   return {name,age};
+// }
+// let p3 = new Person('임꺽정',30);
+// let p4 = new Person('장길산',25);
+// console.log(p3,p4);
+
+
+
+
+
+
+// const person = {
+//   // 데이터 프로퍼티
+//   firstName: 'Ungmo',
+//   lastName: 'Lee',
+
+//   // fullName은 접근자 함수로 구성된 접근자 프로퍼티다.
+//   // getter 함수
+//   get fullName() {
+//     return `${this.firstName} ${this.lastName}`;
+//   },
+//   // setter 함수
+//   set fullName(name) {
+//     // 배열 디스트럭처링 할당: "31.1 배열 디스트럭처링 할당" 참고
+//     [this.firstName, this.lastName] = name.split(' ');
+//   }
+// };
+
+// // 데이터 프로퍼티를 통한 프로퍼티 값의 참조.
+// console.log(person.firstName + ' ' + person.lastName); // Ungmo Lee
+
+// // 접근자 프로퍼티를 통한 프로퍼티 값의 저장
+// // 접근자 프로퍼티 fullName에 값을 저장하면 setter 함수가 호출된다.
+// person.fullName = 'Heegun Lee';
+// console.log(person); // {firstName: "Heegun", lastName: "Lee"}
+
+// // 접근자 프로퍼티를 통한 프로퍼티 값의 참조
+// // 접근자 프로퍼티 fullName에 접근하면 getter 함수가 호출된다.
+// console.log(person.fullName); // Heegun Lee
+
+// // firstName은 데이터 프로퍼티다.
+// // 데이터 프로퍼티는 [[Value]], [[Writable]], [[Enumerable]], [[Configurable]] 프로퍼티 어트리뷰트를 갖는다.
+// let descriptor = Object.getOwnPropertyDescriptor(person, 'firstName');
+// console.log(descriptor);
+// // {value: "Heegun", writable: true, enumerable: true, configurable: true}
+
+// // fullName은 접근자 프로퍼티다.
+// // 접근자 프로퍼티는 [[Get]], [[Set]], [[Enumerable]], [[Configurable]] 프로퍼티 어트리뷰트를 갖는다.
+// descriptor = Object.getOwnPropertyDescriptor(person, 'fullName');
+// console.log(descriptor);
+// // {get: ƒ, set: ƒ, enumerable: true, configurable: true}
+
+
+
+
+
+// const o = {};
+
+// // 내부 슬롯은 자바스크립트 엔진의 내부 로직이므로 직접 접근할 수 없다.
+// o.[[Prototype]] // -> Uncaught SyntaxError: Unexpected token '['
+// // 단, 일부 내부 슬롯과 내부 메서드에 한하여 간접적으로 접근할 수 있는 수단을 제공하기는 한다.
+// o.__proto__ // -> Object.prototype
+
+
+
+
+// let foo = 1; // 전역 변수
+
+// {
+//   let foo = 2; // 지역 변수
+//   let bar = 3; // 지역 변수
+// }
+
+// console.log(foo); // 1
+// console.log(bar); // ReferenceError: bar is not defined
+
+
+
+
+// var a3 = 20;
+// a4 = 30; //변수타입을 정하지 않으면 전역변수가 된다.
+// console.log(global);
+
+
+
+
+// var x = 'global';
+
+// function foo() {
+//   console.log(x); // ①
+//   var x = 'local';
+// }
+
+// foo();
+// console.log(x); // global
+
+
+
+
+// function add(x, y) {
+//   // 매개변수는 함수 몸체 내부에서만 참조할 수 있다.
+//   // 즉, 매개변수의 스코프(유효범위)는 함수 몸체 내부다.
+//   console.log(x, y); // 2 5
+//   return x + y;
+// }
+
+// add(2, 5);
+
+// // 매개변수는 함수 몸체 내부에서만 참조할 수 있다.
+// console.log(x, y); // ReferenceError: x is not defined
