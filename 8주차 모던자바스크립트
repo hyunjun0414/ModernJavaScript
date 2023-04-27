@@ -1,0 +1,209 @@
+//자바스크립트에는 생성자함수내에 정적메소드와,
+//프로토타입내에 메소드와
+//객체에 인스턴스메소드가 있다.
+
+//다른언어는 정적메소드와 인스턴스메소드가있는데
+//다른언어 인스턴스메소드 == 자바스크립트 프로토타입메소드
+
+
+
+
+// //메모리중복을 제거하는과정
+// function Circle(radius)
+//   {
+//     this.radius = radius;
+//   }
+// Circle.prototype.getRadius = function()
+//   {
+//     return this.radius;
+//   }
+// let c1 = new Circle(2); 
+// let c2 = new Circle(5); 
+// let c3 = new Circle(6); 
+
+// console.log(Circle.prototype == c1.__proto__);
+// console.log(c2.__proto__ == c3.__proto__);
+// console.log(Circle.prototype);
+
+
+
+
+// //메모리중복을 제거하는과정
+// function Circle(radius)
+//   {
+//     this.radius = radius;
+//   }
+// Circle.prototype.getRadius = function()
+//   {
+//     return this.radius;
+//   }
+// let c1 = new Circle(2); 
+// let c2 = new Circle(5); 
+// let c3 = new Circle(6); 
+
+// console.log(c1, c1.getRadius());
+// console.log(c2, c2.getRadius());
+// console.log(c3, c3.getRadius());
+
+
+
+
+
+
+// function Circle(radius)
+//   {
+//     this.radius = radius;
+//     this.getRadius = function()
+//     {
+//       return this.radius;
+//     }
+//   }
+// let c1 = new Circle(2); 
+// let c2 = new Circle(5); 
+// let c3 = new Circle(6); 
+
+// console.log(c1, c1.getRadius());
+// console.log(c2, c2.getRadius());
+// console.log(c3, c3.getRadius());
+
+
+
+
+// console.log([1,2,3].map(item => item*2));
+// console.log(Array.prototype.map.apply([1,2,3],[item => item*2]));
+// console.log(Array.prototype.map.call([1,2,3], item => item*2));
+
+
+
+
+// // __proto__는 square 함수의 프로퍼티가 아니다.
+// console.log(Object.getOwnPropertyDescriptor(square, '__proto__')); // undefined
+
+// // __proto__는 Object.prototype 객체의 접근자 프로퍼티다.
+// // square 함수는 Object.prototype 객체로부터 __proto__ 접근자 프로퍼티를 상속받는다.
+// console.log(Object.getOwnPropertyDescriptor(Object.prototype, '__proto__'));
+// // {get: ƒ, set: ƒ, enumerable: false, configurable: true}
+
+
+
+
+// //new를 쓰지 않으면 형식변환 쓰면 객체생성
+// const str = String(123);
+// console.log(str, typeof str); // 123 string
+
+// const num = Number('123');
+// console.log(num, typeof num); // 123 number
+
+// const bool = Boolean('true');
+// console.log(bool, typeof bool); // true boolean
+
+
+
+
+// // 생성자 함수
+// function Circle(radius) {
+//   this.radius = radius;
+//   this.getDiameter = function () {
+//     return 2 * this.radius;
+//   };
+// }
+
+// // new 연산자 없이 생성자 함수 호출하면 일반 함수로서 호출된다.
+// const circle = Circle(5);
+// console.log(circle); // undefined
+
+// // 일반 함수 내부의 this는 전역 객체 window를 가리킨다.
+// console.log(radius); // 5
+// console.log(getDiameter()); // 10
+
+// circle.getDiameter();
+// // TypeError: Cannot read property 'getDiameter' of undefined
+
+
+
+
+// // 일반 함수 정의: 함수 선언문, 함수 표현식
+// function foo() {}
+// const bar = function () {};
+// // 프로퍼티 x의 값으로 할당된 것은 일반 함수로 정의된 함수다. 이는 메서드로 인정하지 않는다.
+// const baz = {
+//   x: function () {}
+// };
+
+// // 일반 함수로 정의된 함수만이 constructor이다.
+// new foo();   // -> foo {}
+// new bar();   // -> bar {}
+// new baz.x(); // -> x {}
+
+// // 화살표 함수 정의
+// const arrow = () => {};
+
+// new arrow(); // TypeError: arrow is not a constructor
+
+// // 메서드 정의: ES6의 메서드 축약 표현만을 메서드로 인정한다.
+// const obj = {
+//   x() {}
+// };
+
+// new obj.x(); // TypeError: obj.x is not a constructor
+
+
+
+
+
+// function Circle(r)
+// {
+//   this.radius = r;
+//   this.getRadius = function(){return this.radius };
+//   this.setRadius = function(r){this.radius = r;};
+// }
+// var o1 = new Circle(5);
+// console.log('o1 :',o1.getRadius());
+// var o2 = new Circle(15);
+// console.log('o2 :',o2.getRadius());
+
+
+
+
+// function Circle(r)
+// {
+//   this.radius = r;
+//   this.getRadius = function(){return this.radius };
+//   this.setRadius = function(r){this.radius = r;};
+// }
+// var o1 = new Circle(5);
+// console.log('o1 :',o1.getRadius());
+// o1.setRadius(10);
+// console.log('o1 :',o1.getRadius());
+
+
+
+// function Circle(r)
+// {
+//   this.radius = r;
+//   this.getRadius = function()
+//   {
+//     return 100;
+//   }
+// }
+// var o1 = new Circle(5);
+// console.log('o1 :',o1.getRadius());
+
+
+
+
+// var o1 ={
+//   radius:5,
+//   getRadius()
+//   {
+//     return this.radius;
+//   },
+//   setRadius: function(r)
+//   {
+//     this.radius = r;
+//   }
+// };
+
+// console.log('o1 :',o1.getRadius());
+// o1.setRadius(10);
+// console.log('o1 :',o1.getRadius());
