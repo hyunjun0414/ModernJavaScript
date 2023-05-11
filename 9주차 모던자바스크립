@@ -1,0 +1,196 @@
+// // 함수 객체는 prototype 프로퍼티를 소유한다.
+// // 단, 화살표함수와, ES6함수축약문법은 
+// // prototype 프로퍼티를 소유하지 않는다.
+// (function () {}).hasOwnProperty('prototype'); // -> true
+
+// // 일반 객체는 prototype 프로퍼티를 소유하지 않는다.
+// ({}).hasOwnProperty('prototype'); // -> false
+
+
+
+
+// const obj = {};
+// const obj2 = {};
+// const obj3 = {};
+// const parent = { x: 1 };
+
+// Object.setPrototypeOf(obj, parent); // obj.__proto__ = parent;
+// Object.setPrototypeOf(obj2, parent); // obj2.__proto__ = parent;
+// Object.setPrototypeOf(obj3, parent); // obj3.__proto__ = parent;
+
+// console.log(obj.x); // 1
+// console.log(obj2.x); // 1
+// console.log(obj3.x); // 1
+
+// parent.x = 2;
+// obj3.x = 3;
+// delete obj3.x; //3을 지우고 다시 상위 프로퍼티에서 찾는다.
+
+// console.log(obj.x); // 2
+// console.log(obj2.x); // 2
+// console.log(obj3.x); // 2
+
+
+
+// var o = {};
+// console.log(o.__proto__);
+// console.log(Object.getPrototypeOf(o));
+// console.log(o.__proto__ === Object.getPrototypeOf(o));
+
+// var o2 = Object.create({x:1});
+// console.log(o2.__proto__);
+// var o3 = Object.create(null);
+// console.log(o3.__proto__);
+
+
+
+
+
+
+// //prototype chain을 확인하는 코드
+// function Person(n,a)
+// {
+//   this.name = n;
+//   this.age = a;
+// }
+
+// var o1 = {};
+// var o2 = new Person('hong',30);
+
+
+// console.log(o2.__proto__.__proto__.__proto__);
+// console.log(o2.__proto__.__proto__);
+// console.log(o2.__proto__);
+
+
+
+
+
+
+
+// //__proto__는 getter와 setter 함수로 정의된 내부 슬롯이다.
+// //prototype chain을 확인하는 코드
+// function Person(n,a)
+// {
+//   this.name = n;
+//   this.age = a;
+// }
+
+// var o1 = {};
+// var o2 = new Person('hong',30);
+
+// console.log(o1.__proto__ === Object.prototype);
+// console.log(o2.__proto__ === Object.prototype);
+// console.log(o2.__proto__ === Person.prototype);
+// console.log(o2.__proto__.__proto__ === Object.prototype);
+// console.log(o2.__proto__.__proto__.__proto__);
+
+
+
+
+// //프로토타입 메소드를 가지게 하는법
+// // 인스턴스마다 print 메소드를 추가할 필요 없이, 
+// // 프로토타입에 메소드를 추가하면 해당 클래스로 생성된 모든 
+// // 인스턴스에서 해당 메소드를 공유할 수 있습니다.
+// // 메모리사용 최적화
+// const Person = (function()
+// {
+//   function Person(n,a)
+//   {
+//     this.name = n;
+//     this.age = a; 
+//   }
+//   //this.print
+//   Person.prototype.print = function()
+//   {
+//     console.log('name:',this.name,' age:',this.age);
+//   }
+//   return Person;
+// }());
+// var p1 = new Person('Hong gil-dong',30);
+// var p2 = new Person('Kim gil-dong',25);
+// p1.print();
+// p2.print();
+
+
+
+
+// //생성자 함수의 prototype 프로퍼티에 print 메소드를 추가
+// function Person(n,a)
+// {
+//   this.name = n;
+//   this.age = a; 
+// }
+// //this.print
+// Person.prototype.print = function()
+// {
+//   console.log('name:',this.name,' age:',this.age);
+// }
+
+// var p1 = new Person('Hong gil-dong',30);
+// var p2 = new Person('Kim gil-dong',25);
+// p1.print();
+// p2.print();
+
+
+
+
+// //객체가 각각 메소드를 가짐으로써 비효율적
+// function Person(n,a)
+// {
+//   this.name = n;
+//   this.age = a;
+//   this.print = function()
+//   {
+//     console.log('name:',this.name,' age:',this.age);
+//   }
+// }
+
+// var p1 = new Person('Hong gil-dong',30);
+// var p2 = new Person('Kim gil-dong',25);
+// p1.print();
+// p2.print();
+
+
+
+
+// function Person(n,a)
+// {
+//   this.name = n;
+//   this.age = a;
+// }
+
+// var p1 = new Person('Hong gil-dong',30);
+// var p2 = new Person('Kim gil-dong',25);
+
+// var o1 = new Object();
+// o1.data=100;
+// var o2 = new Object();
+// o2.data=200;
+
+
+
+
+
+
+// function Person(n,a)
+// {
+//   this.name = n;
+//   this.age = a;
+// }
+
+// var obj = new Person('Hong gil-dong',30);
+// var obj2 = new Person('Kim gil-dong',25);
+
+// console.log(obj);
+// console.log(obj2);
+// console.log(Person);
+// console.log(Person.prototype);
+// console.log(Person.prototype.constructor);
+
+
+//자바스크립트는 프로토타입기반의 상속을 지원한다.
+//Object 메소드는 정적메소드
+//Object.prototype 메소드는 인스턴스메소드
+//자바스크립트에서는 객체지향언어에서의 메소드오버라이딩을
+//셰도잉이라고 한다
