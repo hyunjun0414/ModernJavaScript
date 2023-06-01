@@ -1,0 +1,346 @@
+const a = [1,2,3];
+const b = {a:1,b:2,c:3};
+console.log(...a); //consol.log(1,2,3);
+console.log({...b});
+
+
+
+// const todos = [
+//   { id: 1, content: 'HTML', completed: false },
+//   { id: 2, content: 'CSS', completed: true },
+//   { id: 3, content: 'Javascript', completed: false }
+// ];
+
+// // 얕은 복사(shallow copy)
+// const _todos = JSON.parse(JSON.stringify(todos));
+// console.log(_todos === todos); // false
+// console.log(_todos[0] === todos[0]); // true
+
+
+
+
+
+
+// const todos = [
+//   { id: 1, content: 'HTML', completed: false },
+//   { id: 2, content: 'CSS', completed: true },
+//   { id: 3, content: 'Javascript', completed: false }
+// ];
+
+// // 얕은 복사(shallow copy)
+// const _todos = todos.slice();
+// // const _todos = [...todos];
+
+// // _todos와 todos는 참조값이 다른 별개의 객체다.
+// console.log(_todos === todos); // false
+
+// // 배열 요소의 참조값이 같다. 즉, 얕은 복사되었다.
+// console.log(_todos[0] === todos[0]); // true
+
+
+
+
+// const arr = [1, 2];
+
+// // ES6 스프레드 문법
+// const newArr = [...arr, 3,5,8];
+// console.log(newArr); // [1, 2, 3, 5 ,8]
+
+
+
+
+
+// const arr = [1, 2, 3];
+// //원본데이터 변경
+// // Array.prototype.splice(삭제를 시작할 인덱스, 삭제할 요소 수)
+// // arr[1]부터 1개의 요소를 제거
+// arr.splice(1, 1);
+// console.log(arr); // [1, 3]
+
+// // length 프로퍼티가 자동 갱신된다.
+// console.log(arr.length); // 2
+
+
+
+
+// const arr = [];
+
+// // 배열 요소의 추가
+// arr[0] = 1;
+// arr['1'] = 2;
+
+// // 프로퍼티 추가
+// arr['foo'] = 3;
+// arr.bar = 4;
+// arr[1.1] = 5;
+// arr[-1] = 6;
+
+// console.log(arr); // [1, 2, foo: 3, bar: 4, '1.1': 5, '-1': 6]
+
+// // 프로퍼티는 length에 영향을 주지 않는다.
+// console.log(arr.length); // 2
+
+
+
+
+// const arr = Array.from({ length: 10 },(_,idx)=>idx+11);
+// console.log(arr);
+
+
+
+
+// const arr = [];
+
+// console.time('Array Performance Test');
+
+// for (let i = 0; i < 10000000; i++) {
+//   arr[i] = i;
+// }
+// console.timeEnd('Array Performance Test');
+// // 약 340ms
+
+// const obj = {};
+
+// console.time('Object Performance Test');
+
+// for (let i = 0; i < 10000000; i++) {
+//   obj[i] = i;
+// }
+
+// console.timeEnd('Object Performance Test');
+
+
+
+
+
+// const arr = ['apple', 'banana', 'orange'];
+// for (let i = 0; i < arr.length; i++) {
+//   console.log(arr[i]); 
+// }
+// for(let k in arr){
+//   console.log(k,arr[k]);
+// }
+// for(let k of arr){
+//   console.log(k);
+// }
+// arr.forEach((item,idx,arr)=>console.log(idx,item));
+
+
+
+
+// const o1 = {0:10, 1:20, 2:30, length:3};
+// const arr = Array.from(o1);
+// const arr2 = Array.prototype.slice.apply(o1);
+// const arr3 = Array.from(o1,(idx)=>idx);
+// console.log(o1,':',arr,':',arr2,':',arr3);
+
+
+
+
+
+// const o1 = {0:10, 1:20, 2:30, length:3};
+// const arr = Array.prototype.slice.apply(o1);
+// console.log(o1,':',arr);
+
+
+
+
+// const arr = [1,2,3,4,5];
+// const arr2 = arr.slice(1,3);
+// const arr3 = Array.prototype.slice.apply(arr,[1,3]);
+// console.log(arr,':',arr2,':',arr3);
+
+
+
+
+
+// const arr = [1,2,3,4,5];
+// const arr2 = arr.slice(1,3);
+// const arr3 = Array.prototype.slice.call(arr);
+// console.log(arr,':',arr2,':',arr3);
+
+
+
+
+
+// function sum() {
+//   // 유사 배열 객체인 arguments 객체를 배열로 변환한다.
+//   console.log(arguments);
+//   var array = Array.prototype.slice.call(arguments);
+
+//   return array.reduce(function (pre, cur) {
+//     return pre + cur;
+//   }, 0);
+// }
+
+// console.log(sum(1, 2, 3, 4, 5)); // 15
+
+
+
+
+
+
+// const a = [1,2,3,4,5];
+// const b = {a:1,b:2,c:3};
+// const a2 = [...a];  //스프레드연산자
+// const b2 = {...b};  //스프레드연산자
+// console.log(a2);
+// console.log(b2);
+
+// function print(...args)  //Rest parameter :여러목록을 배열로
+// {
+//   console.log(args);
+// }
+// print(1,2,3);
+// print(10,20);
+
+
+
+
+
+
+// class Person1 {
+//   constructor(n)
+//   {
+//     this.nick = n;
+//   }
+//   sayHi = () => console.log(`Hi ${this.nick}`);
+// }
+
+
+// class Person2 {
+//   // 클래스 필드 정의 제안
+//   nick = 'Lee';
+//   constructor(n)
+//   {
+//     this.nick = n;
+//   }
+//   sayHi = () => console.log(`Hi ${this.nick}`);
+// }
+
+// class Person3 {
+//   // 클래스 필드 정의 제안
+//   #nick = 'Lee';
+//   constructor(n)
+//   {
+//     this.#nick = n;
+//   }
+//   sayHi = () => console.log(`Hi ${this.#nick}`);
+// }
+
+
+// const p1 = new Person1('hong gil dong');
+// const p2 = new Person2('park gil dong');
+// const p3 = new Person3('Lee gil dong');
+// p1.sayHi();
+// p2.sayHi();
+// p3.sayHi();
+// console.log(p1.nick);
+// console.log(p2.nick);
+// // console.log(p3.#nick); //error # == private
+
+
+
+
+
+// class Person1 {
+//   constructor(n)
+//   {
+//     this.nick = n;
+//   }
+//   sayHi = () => console.log(`Hi ${this.nick}`);
+// }
+
+
+// class Person2 {
+//   // 클래스 필드 정의 제안
+//   nick = 'Lee';
+//   constructor(n)
+//   {
+//     this.nick = n;
+//   }
+//   sayHi = () => console.log(`Hi ${this.nick}`);
+// }
+
+// const p1 = new Person1('hong gil dong');
+// const p2 = new Person2('park gil dong');
+// p1.sayHi();
+// p2.sayHi();
+
+
+
+
+
+// class Person1 {
+//   constructor()
+//   {
+//     this.nick = 'Lee';
+//   }
+//   sayHi = () => console.log(`Hi ${this.nick}`);
+// }
+
+
+// class Person2 {
+//   // 클래스 필드 정의 제안
+//   nick = 'Lee';
+//   sayHi = () => console.log(`Hi ${this.nick}`);
+// }
+
+// new Person1().sayHi();
+// new Person2().sayHi();
+// console.log(Person1.nick);
+// console.log(Person2.nick);
+
+
+
+
+// function Person(name) {
+//   this.name = name;
+// }
+
+// Person.prototype = {
+//   // constructor 프로퍼티와 생성자 함수 간의 연결을 재설정
+//   constructor: Person,
+//   sayHi() { console.log(`Hi ${this.name}`); }
+// };
+
+// const person = new Person('Lee');
+// person.sayHi(); // Hi Lee
+
+
+
+
+
+
+// const person = {
+//   name: 'Lee',
+//   sayHi: () => console.log(`Hi ${this.name}`),
+//   sayHi2:function(){console.log(`Hi ${this.name}`);}
+// };
+
+// // sayHi 프로퍼티에 할당된 화살표 함수 내부의 this는 상위 스코프인 전역의 this가 가리키는
+// // 전역 객체를 가리키므로 이 예제를 브라우저에서 실행하면 this.name은 빈 문자열을 갖는
+// // window.name과 같다. 전역 객체 window에는 빌트인 프로퍼티 name이 존재한다.
+// person.sayHi(); // Hi
+// person.sayHi2(); 
+
+
+
+
+
+
+// const add = (a, b) => a + b;
+// const add2 = function(a,b){return a+b};
+
+// console.log(add.prototype);
+// console.log(add2.prototype);
+
+
+// console.log(add(1,2));
+// console.log(add2(1,2));
+
+// console.log(add.call(null, 1, 2));    // 3
+// console.log(add.apply(null, [1, 2])); // 3
+// console.log(add.bind(null, 1, 2)());  // 3
+
+
